@@ -1,4 +1,4 @@
-package com.seotory.mvc;
+package com.seotory.web;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

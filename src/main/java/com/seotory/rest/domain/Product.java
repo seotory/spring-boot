@@ -1,13 +1,26 @@
-package com.seotory.mvc.domain;
+package com.seotory.rest.domain;
 
 import java.util.Date;
+
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 public class Product {
 	
 	public int id;
-	public String name;
+	
+	@NotNull
+	public String name; // 주의 공백 문자는 OK로 통과 됨.
+	
+	@NotNull
 	public int remainCount;
+	
+	@NotNull
+	@Min(1)
+	@Max(999999999)
 	public int price;
+	
 	public Date regDts;
 	
 	public int getId() {

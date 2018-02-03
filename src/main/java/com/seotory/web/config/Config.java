@@ -1,10 +1,7 @@
-package com.seotory.mvc.config;
+package com.seotory.web.config;
 
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Config {
-
-//	public void config
-	
 }
