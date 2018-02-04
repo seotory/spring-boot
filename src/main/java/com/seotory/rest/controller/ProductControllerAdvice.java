@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @Component
-@ControllerAdvice("com.seotory.mvc.controller")
+@ControllerAdvice("com.seotory.rest.controller")
 public class ProductControllerAdvice {
 
 	@ExceptionHandler(MethodArgumentNotValidException.class)

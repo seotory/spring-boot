@@ -29,7 +29,7 @@ public class ProductController {
 	@RequestMapping(path = ProductURL.SAVE, method = RequestMethod.POST)
 	public ResponseEntity<?> save(@Valid @RequestBody Product product) {
 		
-		HttpHeaders headers = new HttpHeaders();
+//		HttpHeaders headers = new HttpHeaders();
 //		Link link = entityLinks.linkToSingleResource(Order.class, orderId);
 //		headers.setLocation(linkTo(ProductController.class).slash(product).toUri());
 		
