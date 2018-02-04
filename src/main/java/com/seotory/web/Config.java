@@ -1,4 +1,4 @@
-package com.seotory.web.config;
+package com.seotory.web;
 
 import org.springframework.context.annotation.Configuration;
 

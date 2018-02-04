@@ -6,7 +6,6 @@ import java.util.HashMap;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -20,19 +19,11 @@ import com.seotory.rest.service.ProductService;
 @RestController
 public class ProductController {
 	
-//	@Autowired 
-//	private EntityLinks entityLinks;
-	
 	@Autowired
 	private ProductService productService;
 	
 	@RequestMapping(path = ProductURL.SAVE, method = RequestMethod.POST)
 	public ResponseEntity<?> save(@Valid @RequestBody Product product) {
-		
-//		HttpHeaders headers = new HttpHeaders();
-//		Link link = entityLinks.linkToSingleResource(Order.class, orderId);
-//		headers.setLocation(linkTo(ProductController.class).slash(product).toUri());
-		
 		return ResponseEntity.ok(Collections.singletonMap("result", productService.save(product)));
 	}
 	
