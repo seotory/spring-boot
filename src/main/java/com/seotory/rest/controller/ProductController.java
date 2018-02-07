@@ -33,7 +33,18 @@ public class ProductController {
 	@RequestMapping(path = ProductURL.GET, method = RequestMethod.GET)
 	public ResponseEntity<?> get(@PathVariable("id") int id) {
 		Product product = productService.get(id);
-		RestResponse restResponse = new RestResponse(HttpStatus.OK, "SUCCESS", product);
+		RestResponse restResponse = new RestResponse();
+		if (product != null) {
+			restResponse.setStatus(HttpStatus.OK)
+				.setMessage("SUCCESS")
+				.setData(product);
+			
+		} else {
+			restResponse.setStatus(HttpStatus.NOT_FOUND)
+				.setMessage("not found")
+				.setData(null);
+		}
+		
 		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	
