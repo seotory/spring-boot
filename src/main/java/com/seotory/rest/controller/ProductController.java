@@ -1,11 +1,11 @@
 package com.seotory.rest.controller;
 
-import java.util.Collections;
 import java.util.HashMap;
 
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.seotory.rest.domain.Product;
+import com.seotory.rest.domain.RestResponse;
 import com.seotory.rest.service.ProductService;
 
 @RestController
@@ -24,23 +25,30 @@ public class ProductController {
 	
 	@RequestMapping(path = ProductURL.SAVE, method = RequestMethod.POST)
 	public ResponseEntity<?> save(@Valid @RequestBody Product product) {
-		return ResponseEntity.ok(Collections.singletonMap("result", productService.save(product)));
+		RestResponse restResponse = 
+				new RestResponse(HttpStatus.OK, "SUCCESS", productService.save(product));
+		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	
 	@RequestMapping(path = ProductURL.GET, method = RequestMethod.GET)
 	public ResponseEntity<?> get(@PathVariable("id") int id) {
 		Product product = productService.get(id);
-		return ResponseEntity.ok(product);
+		RestResponse restResponse = new RestResponse(HttpStatus.OK, "SUCCESS", product);
+		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	
 	@RequestMapping(path = ProductURL.GET_ALL, method = RequestMethod.GET)
 	public ResponseEntity<?> getAll() {
-		return ResponseEntity.ok(productService.getAll());
+		RestResponse restResponse = 
+				new RestResponse(HttpStatus.OK, "SUCCESS", productService.getAll());
+		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	
 	@RequestMapping(path = ProductURL.REMOVE, method = RequestMethod.DELETE)
 	public ResponseEntity<?> remove(@PathVariable("id") int id) {
-		return ResponseEntity.ok(Collections.singletonMap("result", productService.remove(id)));
+		RestResponse restResponse = 
+				new RestResponse(HttpStatus.OK, "SUCCESS", productService.remove(id));
+		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	
 	@RequestMapping(path = ProductURL.INFO, method = RequestMethod.GET)
@@ -49,6 +57,8 @@ public class ProductController {
 		data.put("sum", 0);
 		data.put("orderPrice", productService.getOrderByPrice());
 		data.put("overPrice", productService.getOverPrice(50000));
-		return ResponseEntity.ok(data);
+		RestResponse restResponse = new RestResponse(HttpStatus.OK, "SUCCESS", data);
+		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
+	
 }
