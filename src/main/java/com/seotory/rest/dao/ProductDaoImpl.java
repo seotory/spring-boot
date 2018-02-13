@@ -16,12 +16,15 @@ public class ProductDaoImpl implements ProductDao {
 	// 자바 컬랙션에서는 참조 타입의 객제만 사용 할 수 있기 때문에 int 대신에 Integer를 사용한다.
 	private Map<Integer, Product> data = new HashMap<Integer, Product>();
 	
+	private static int count = 0;
+	
 	private Random r = new Random();
 	
 	@Override
 	public boolean save(Product product) {
 		// TODO Auto-generated method stub
-		int id = data.size() + 1;
+		count += 1;
+		int id = count;
 		product.setId(id);
 		product.setPrice(r.nextInt(100000+1) + 10);
 		product.setRegDts(new Date());

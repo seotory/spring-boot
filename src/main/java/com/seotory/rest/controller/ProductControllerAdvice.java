@@ -17,7 +17,7 @@ public class ProductControllerAdvice {
 	@ExceptionHandler(NoHandlerFoundException.class)
 	public ResponseEntity<?> noHandlerFoundException(Exception e) {
 		RestResponse restResponse = 
-				new RestResponse(HttpStatus.NOT_FOUND, e.getMessage(), null);
+				new RestResponse(HttpStatus.NOT_FOUND, e.getMessage());
 		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 
@@ -25,14 +25,14 @@ public class ProductControllerAdvice {
 	public ResponseEntity<?> methodArgumentNoValidException(Exception e) {
 		e.printStackTrace();
 		RestResponse restResponse = 
-				new RestResponse(HttpStatus.BAD_REQUEST, e.getMessage(), null);
+				new RestResponse(HttpStatus.BAD_REQUEST, e.getMessage());
 		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> exception(Exception e) {
 		RestResponse restResponse = 
-				new RestResponse(HttpStatus.EXPECTATION_FAILED, e.getMessage(), null);
+				new RestResponse(HttpStatus.EXPECTATION_FAILED, e.getMessage());
 		return ResponseEntity.status(restResponse.getStatus()).body(restResponse);
 	}
 	

@@ -13,6 +13,10 @@ public class RestResponse {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public RestResponse(HttpStatus status, String message) {
+		this(status, message, null);
+	}
+	
 	public RestResponse(HttpStatus status, String message, Object data) {
 		this.status = status;
 		this.code = status.value();
